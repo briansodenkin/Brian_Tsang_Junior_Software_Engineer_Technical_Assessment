@@ -152,7 +152,14 @@ After running the above command, development server will be avaliable at
    ```sh
    http://127.0.0.1:8000
    ```
-
+   
+### Testing
+   
+   ```sh
+   python manage.py test
+   ```
+Testing based on the CREATE, RETRIEVE, UPDATE operations of the `Doctor` related endpoints
+   
 ### API Endpoints
 
 For detailed documentations for the API, it is available at
