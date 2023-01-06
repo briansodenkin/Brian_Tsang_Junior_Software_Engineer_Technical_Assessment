@@ -41,7 +41,7 @@ In this project, I used `Django` for development.
 
 - API design
   - More API endpoints should be provided for conveinient CRUD operations
-  - E.g. doctor/phone/
+  - E.g. doctor/availability/
  
 - Testing
   - CRUD operations for `Clinic`, `Phone` are not tested rigorously 
@@ -49,6 +49,32 @@ In this project, I used `Django` for development.
 
 - Localisation
   - CRUD operations based on `locale` are not supported  
+
+## Production consideration
+- Recoverability: 
+  - Ability to recover an application environment in the event of system failure or data loss
+  - Backup database
+  - Backup server
+  - Recover the data
+
+- Availablitiy
+  - Ability to provide services when user request
+  - Regular checking on the server status
+  - Cloud hosting
+
+- Correctness
+  - Provide the most up-to-date response
+  - Handle async update, create
+  - Data lock for async operations
+
+## Assumptions
+- `Phone` and `District` are related to where the doctor worked in, namely `Clinic`
+- `Doctor` availability should be in Json format
+- `Doctor` availability should have specific field
+- `Doctor` can work in multiple `Clinic`
+- `Doctor` can has many `Category`
+- No async operations on the database
+- Json provided by response from the GET request will give all info required by the sample UI
 
 ## Database design
 
@@ -141,6 +167,9 @@ For detailed documentations for the API, it is available at
 | GET | /api/docs | To retrieve the detailed api documents page |
 | POST | /api/user/create | To create a new user |
 | GET | /doctor | To retrieve all doctors |
+| GET | /doctor/?catgeory=`category_id` or `category_name` | To retrieve all doctors based on `Category` |
+| GET | /doctor/?language=`English` or `Chinese` | To retrieve all doctors based on `Language` |
+| GET | /doctor/?district=`district_id` or `district_name` | To retrieve all doctors based on `District` |
 | GET | /doctor/:id | To retrieve details of a single doctor |
 | PUT | /doctor/:id | To update details of a single doctor |
 | PATCH | /doctor/:id | To update partial details of a single doctor |
