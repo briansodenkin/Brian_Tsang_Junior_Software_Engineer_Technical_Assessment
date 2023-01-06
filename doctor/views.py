@@ -40,6 +40,9 @@ class DoctorViewSet(viewsets.ModelViewSet):
         categories = self.request.query_params.get("category")
         districts = self.request.query_params.get("district")
         language = self.request.query_params.get("language")
+        min_price = self.request.query_params.get("min_price")
+        max_price = self.request.query_params.get("max_price")
+        
         queryset = self.queryset
         if categories:
             categories_ids = self._params_str_to_ints_categories(categories)
@@ -56,7 +59,11 @@ class DoctorViewSet(viewsets.ModelViewSet):
             if self._check_if_params_int(language):
                 language_id = self._params_ints_to_ints(language)
             queryset = queryset.filter(language=language_id[0])
+        if min_price and max_price:
+            print(min_price, max_price)
+            queryset = queryset.filter(price__range=(int(min_price),int(max_price)))
         return queryset.order_by("-doctor_id").distinct()
+    
 
     def get_serializer_class(self):
         """Return the serializer class for request."""
