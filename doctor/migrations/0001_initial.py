@@ -29,7 +29,7 @@ def create_default_category(apps, schema_editor):
         bulk_list = list()
         for category in categories:
             bulk_list.append(Category(category_name=category))
-        Category.objcdects.bulk_create(bulk_list)
+        Category.objects.bulk_create(bulk_list)
 
 
 # Bulk create doctor
