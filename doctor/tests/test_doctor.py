@@ -184,6 +184,38 @@ class DoctorTests(TestCase):
         self.assertEqual(res.status_code, 400)
         self.assertRaises(serializers.ValidationError)
 
+    def test_create_user_with_invalid_availability_returns_error(self):
+        """Test create with invalid price."""
+        create_category()
+        district = create_district()
+        create_clinic(address="Dummy address 1", district=district)
+        defaults = {
+            "first_name": "Dummy",
+            "last_name": "Dummy",
+            "price": 1200,
+            "price_description": "Body Checking",
+            "exclu_price": 1000,
+            "availability": {
+                "Mon": "1000-1800",
+                "Dummy": "Dummy",
+                "Dummy2": "Dummy2",
+            },
+            "language": 1,
+            "category": [{"category_id": 2, "category_name": "Dummy 1"}],
+            "clinic": [
+                {
+                    "clinic_id": 11,
+                    "clinic_name": "Dummy clinic",
+                    "clinic_address": "Dummy address 2",
+                    "district": 10,
+                    "phone_clinic": [],
+                }
+            ],
+        }
+        res = self.client.post(DOCTOR_URL, defaults, format="json")
+        self.assertEqual(res.status_code, 400)
+        self.assertRaises(serializers.ValidationError)
+
     def test_partial_update_doctor(self):
         """Test partial update of a Doctor."""
         district = create_district()
