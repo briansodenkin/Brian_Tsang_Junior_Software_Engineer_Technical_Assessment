@@ -112,7 +112,7 @@ This is a section to show you how to set up the project environment
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/briansodenkin/backend_engineer_test.git
+   git clone https://github.com/briansodenkin/Brian_Tsang_Junior_Software_Engineer_Technical_Assessment.git
    ```
 2. Install all python packages
    ```sh
