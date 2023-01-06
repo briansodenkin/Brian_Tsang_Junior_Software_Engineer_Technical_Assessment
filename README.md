@@ -175,8 +175,9 @@ For detailed documentations for the API, it is available at
 | POST | /api/user/create | To create a new user |
 | GET | /doctor | To retrieve all doctors |
 | GET | /doctor/?catgeory=`category_id` or `category_name` | To retrieve all doctors based on `Category` |
-| GET | /doctor/?language=`English` or `Chinese` | To retrieve all doctors based on `Language` |
+| GET | /doctor/?language=`English` or `Chinese` | To retrieve all doctors based on language |
 | GET | /doctor/?district=`district_id` or `district_name` | To retrieve all doctors based on `District` |
+| GET | /doctor/?min_price=`price`&`max_price=`price` | To retrieve all doctors based on price range |
 | GET | /doctor/:id | To retrieve details of a single doctor |
 | PUT | /doctor/:id | To update details of a single doctor |
 | PATCH | /doctor/:id | To update partial details of a single doctor |
