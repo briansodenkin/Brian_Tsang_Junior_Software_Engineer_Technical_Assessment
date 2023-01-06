@@ -16,7 +16,7 @@ def create_default_clinic_phone(apps, schema_editor):
     # We can't import the Person model directly as it may be a newer
     # version than this migration expects. We use the historical version.
     fake = Faker()
-    name_address_list = [(fake.name(), fake.address()) for _ in range(10)]
+    name_address_list = [(fake.name() + "Clinic", fake.address()) for _ in range(10)]
     Clinic = apps.get_model("clinic", "Clinic")
     District = apps.get_model("district", "District")
     Phone = apps.get_model("clinic", "Phone")
