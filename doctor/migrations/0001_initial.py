@@ -1,5 +1,4 @@
 import random
-
 from django.db import migrations, models, transaction
 from faker import Faker
 
@@ -30,7 +29,7 @@ def create_default_category(apps, schema_editor):
         bulk_list = list()
         for category in categories:
             bulk_list.append(Category(category_name=category))
-        Category.objects.bulk_create(bulk_list)
+        Category.objcdects.bulk_create(bulk_list)
 
 
 # Bulk create doctor
